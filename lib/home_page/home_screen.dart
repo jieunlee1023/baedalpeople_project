@@ -8,10 +8,12 @@ import 'package:baedalpeople/home_page/components/shopping_live.dart';
 import 'package:baedalpeople/home_page/components/slide_tab.dart';
 import 'package:baedalpeople/home_page/screens/address_setting_page.dart';
 import 'package:baedalpeople/models/user.dart';
+import 'package:baedalpeople/screens/my_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../screens/search_screen.dart';
 import 'components/slide_event.dart';
 import 'components/today_sale.dart';
 
@@ -25,7 +27,7 @@ class HomeScreen extends StatelessWidget {
       appBar: _appBar(context),
       body: ListView(
         children: [
-          _buildSearchbar(),
+          _buildSearchbar(context),
           SlideTab(),
           Catagory(),
           SlideEvent(),
@@ -52,6 +54,7 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Color(0xff5fbdbc),
       elevation: 0.0,
+      automaticallyImplyLeading: false,
       title: InkWell(
         onTap: () {
           Navigator.push(
@@ -75,41 +78,56 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       actions: [
-        Icon(Icons.grid_view),
+        InkWell(
+            onTap: (){},
+            child: Icon(Icons.grid_view)),
         SizedBox(width: 15),
-        Icon(FontAwesomeIcons.bell, size: 22),
+        InkWell(
+            onTap: (){},
+            child: Icon(FontAwesomeIcons.bell, size: 22)),
         SizedBox(width: 15),
-        Icon(FontAwesomeIcons.faceSmile, size: 22),
+        InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MyScreen(),));
+            },
+            child: Icon(FontAwesomeIcons.faceSmile, size: 22)),
         SizedBox(width: 10),
       ],
     );
   }
 
-  Widget _buildSearchbar() {
-    return Container(
-      width: double.infinity,
-      height: 75,
-      decoration: BoxDecoration(
-        color: Color(0xff5fbdbc),
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          autofocus: false,
-          decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              border: InputBorder.none,
-              prefixIconColor: Color(0xff5fbdbc),
-              prefixIcon: Icon(Icons.search),
-              contentPadding: EdgeInsets.symmetric(
-                vertical: 15,
-              ),
-              hintText: "배고프니까 일단 검색!!",
-              hintStyle: TextStyle(
-                color: Colors.grey,
-              )),
+  Widget _buildSearchbar(var context) {
+    return InkWell(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen()));
+      },
+      child: Container(
+        width: double.infinity,
+        height: 75,
+        decoration: BoxDecoration(
+          color: Color(0xff5fbdbc),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            autofocus: false,
+            showCursor: false,
+            enabled: false,
+            decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border: InputBorder.none,
+                prefixIconColor: Color(0xff5fbdbc),
+                prefixIcon: Icon(Icons.search),
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 15,
+                ),
+                hintText: "배고프니까 일단 검색!!",
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                )),
+          ),
         ),
       ),
     );

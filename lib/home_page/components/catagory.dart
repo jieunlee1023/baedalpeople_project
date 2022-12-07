@@ -1,3 +1,4 @@
+import 'package:baedalpeople/bamin1_page/bamin1_screen.dart';
 import 'package:baedalpeople/home_page/components/slide_event.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,9 @@ class Catagory extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _catagoryTopItem("배민1","main1"),
+              _catagoryTopItem(context,"배민1","main1"),
               SizedBox(width: 10),
-              _catagoryTopItem("배달","main2"),
+              _catagoryTopItem(context,"배달","main2"),
             ],
           ),
           SizedBox(height: 16),
@@ -34,10 +35,13 @@ class Catagory extends StatelessWidget {
     );
   }
 
-  Widget _catagoryTopItem(var id, var img) {
+  Widget _catagoryTopItem(var context, var id, var img) {
     return InkWell(
       onTap: (){
         print("$id 탑 버튼 눌러짐");
+        if (id == "배민1"){
+          Navigator.push(context, MaterialPageRoute(builder: (context) =>Bamin1Page()));
+        }
       },
       child: Container(
         width: 175,

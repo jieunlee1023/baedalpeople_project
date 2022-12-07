@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Catagory_title extends StatelessWidget {
   const Catagory_title({Key? key, required this.title, required this.logoimg})
@@ -21,21 +22,29 @@ class Catagory_title extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10),
-          Image.asset("assets/bamin1_page/$logoimg.png",
-          width: 30,),
-          Spacer(),
+          Image.asset(
+            "assets/screens_page/$logoimg.png",
+            width: 30,
+          ),
+          SizedBox(width: 7),
           InkWell(
-            onTap: (){
+            onTap: () {
               print(" 전체보기 눌러짐");
             },
             child: Row(
               children: [
-                Text("전체보기"),
-                Icon(Icons.keyboard_arrow_right_sharp),
+                Text(
+                  "광고",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                Icon(
+                  FontAwesomeIcons.circleQuestion,
+                  size: 15,
+                  color: Colors.grey,
+                ),
               ],
             ),
           ),
-
         ],
       ),
     );

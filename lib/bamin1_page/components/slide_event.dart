@@ -9,9 +9,12 @@ class SlideEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
-      _eventItem("main_banner1"),
-      _eventItem("main_banner2"),
-      _eventItem("main_banner3"),
+      _eventItem("banner1"),
+      _eventItem("banner2"),
+      _eventItem("banner3"),
+      _eventItem("banner4"),
+      _eventItem("banner5"),
+      _eventItem("banner6"),
     ];
 
     return CarouselSlider(
@@ -20,7 +23,7 @@ class SlideEvent extends StatelessWidget {
       options: CarouselOptions(
         autoPlay: true,
         scrollDirection: Axis.horizontal,
-        height: MediaQuery.of(context).size.height / 5,
+        height: MediaQuery.of(context).size.height / 6.53,
         viewportFraction:1,
       ),
     );
@@ -31,21 +34,14 @@ class SlideEvent extends StatelessWidget {
       onTap: (){
         print("움직이는 배너 눌러짐");
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20),
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("assets/home_page/$item.png",
-              fit: BoxFit.cover),
-
-            ],
-          ),
+      child: Container(
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/bamin1_page/$item.png",
+            fit: BoxFit.cover),
+          ],
         ),
       ),
     );

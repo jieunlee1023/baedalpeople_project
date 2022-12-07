@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 import 'catagory_title.dart';
 
-class NewShopItem extends StatelessWidget {
-  NewShopItem({Key? key}) : super(key: key);
+
+class SlideItem extends StatelessWidget {
+  SlideItem({Key? key}) : super(key: key);
 
   final CarouselController _controller = CarouselController();
 
@@ -16,7 +17,7 @@ class NewShopItem extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          Catagory_title(title: "조리도 빠른 배민1 가게", logoimg: "new_shop_logo"),
+          Catagory_title(title: "요즘 우리동네 인기 맛집", logoimg: "popular_icon"),
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
@@ -24,12 +25,13 @@ class NewShopItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  _todaySaleImage("item1", "크로플 오리아...","4.9", "4,000원"),
-                  _todaySaleImage("item2", "생과일 주스...","5.0", "3,000원"),
-                  _todaySaleImage("item3", "따끈한 어묵탕...","5.0", "5,200원"),
-                  _todaySaleImage("item4", "냐미냐미족발...","4.8", "4,800원"),
-                  _todaySaleImage("item5", "디저트카페...","4.7", "4,000원"),
-                  _todaySaleImage("item6", "바삭한 치킨후라이...","4.5", "3,000원"),
+                  _todaySaleImage("popular_item1", "요달의 찜닭","4.9", "0원~4,000원", "30~40분"),
+                  _todaySaleImage("popular_item2", "닭발의 왕족...","5.0", "0원~3,000원","25~30분"),
+                  _todaySaleImage("popular_item3", "맛있는 막창집...","5.0", "0원~5,200원","35~45분"),
+                  _todaySaleImage("popular_item4", "굽네치킨&피자...","4.8", "0원~4,800원","20~35분"),
+                  _todaySaleImage("popular_item5", "맥시카나치킨...","4.7", "0원~4,000원","30~40분"),
+                  _todaySaleImage("popular_item6", "두부김치전문점...","4.5", "0원~3,000원","25~45분"),
+                  _todaySaleImage("popular_item7", "치킨후라이...","4.5", "0원~3,000원","50~60분"),
                 ],
               ),
             ),
@@ -39,7 +41,7 @@ class NewShopItem extends StatelessWidget {
     );
   }
 
-  Widget _todaySaleImage(var item, var title, var star, var deliveryTip) {
+  Widget _todaySaleImage(var item, var title, var star, var deliveryTip, var time) {
     return Padding(
       padding: const EdgeInsets.only(right: 5, left: 5, bottom: 8),
       child: Column(
@@ -54,7 +56,7 @@ class NewShopItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
-                "assets/bamin1_page/$item.png",
+                "assets/screens_page/$item.png",
                 width: 150,
               ),
             ),
@@ -82,6 +84,24 @@ class NewShopItem extends StatelessWidget {
             ),
           ),
           Text("배달팁 $deliveryTip"),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              height: 33,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(236, 236, 236, 1.0,),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.access_time_outlined, size: 16),
+                  SizedBox(width: 5),
+                  Text(time),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
