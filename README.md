@@ -15,8 +15,7 @@
 
 ## ⚙️ 사용 기술 및 라이브러리
 
-- Dart
-- Flutter
+ <img src="https://img.shields.io/badge/Dart-009B14?style=flat&logo=Dart&logoColor=white"/> <img src="https://img.shields.io/badge/Flutter-0042D8?style=flat&logo=Flutter&logoColor=white"/>
 - 네이버 지도 API
 - carousel_slider, flutter_slidable 라이브러리
 - url_launcher 라이브러리
